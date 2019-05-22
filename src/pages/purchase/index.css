@@ -1,0 +1,153 @@
+.container{
+    padding: 0 15px;
+}
+header{
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    border: 1px solid rgba(181,181,181,.3);
+    border-radius: 5px;
+    font-size: 23px;
+    color: rgb(255,255,255);
+}
+header p{
+    flex:1;
+    height: 100%;
+    line-height: 55px;
+    text-align: center;
+}
+header p:first-child{
+    border-right: 1px solid rgba(181,181,181,.3);
+}
+.active{
+    color: rgb(214,188,142);
+    background:rgba(28,28,30,1);
+}
+.main{
+    margin-top: 20px;
+    padding: 27px 20px 15px;
+    background: rgb(28,28,30);
+    border-radius: 5px;
+}
+.price, .buy{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(204,204,204);
+}
+.buy{
+    margin-top: 30px;
+}
+.price p:first-child{
+    font-size: 16px;
+}
+.money{
+    margin-right: 5px;
+    font-size: 18px;
+    color: rgb(255,255,255);
+}
+.unit{
+    font-size: 14px;
+}
+
+.choose{
+    width: 130px;
+}
+.choose input{
+    width:63%;
+    height: 45px;
+    padding-left: 0;
+    box-sizing: border-box;
+    color: #fff;
+    background: rgb(43,43,46);
+    font-weight: bold;
+    border: 0;
+}
+.input-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 130px;
+    margin-top: 17px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid rgba(181,181,181,.3);
+    background: rgb(43,43,46);
+    text-align: left;
+    font-size: 16px;
+    color: rgb(204,204,204);
+}
+.coin{
+    font-size: 18px;
+}
+.transfer img{
+    width: 20px;
+    height: 18px;
+    margin: 50px 13px;
+}
+.line{
+    height: 1px;
+    width: 100%;
+    margin-top: 20px;
+    background: rgba(181,181,181,.2);
+}
+.payWays{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: rgb(255,255,255);
+}
+.payWays:after{
+    position: absolute;
+    bottom: -15px;
+    left:0;
+    right: 0;
+    margin: auto;
+    content: '';
+    height: 2px;
+    width: 100%;
+    border-radius: 1px;
+    background: rgb(34,34,36);
+}
+.payWays p{
+    width: 60px;
+    text-align: center;
+}
+.payWays p:last-child{
+    text-align: right;
+}
+.activePay{
+    position: relative;
+}
+.activePay:after{
+    position: absolute;
+    content: '';
+    bottom: -15px;
+    left:0;
+    margin: auto;
+    width: 60px;
+    height: 2px;
+    border-radius: 1px;
+    background: rgb(214,188,142);
+    z-index: 1;
+}
+.warn-text{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(204,204,204,.4);
+}
+.buyBtn{
+    width: 100%;
+    height: 45px;
+    margin-top: 8px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: rgb(255,255,255);
+    background: rgb(214,188,142);
+}

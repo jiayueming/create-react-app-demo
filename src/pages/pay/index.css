@@ -1,0 +1,81 @@
+.pay-container{
+    padding: 25px 15px 0 15px;
+    color: #fff;
+}
+.title{
+    font-size: 20px;
+}
+.pay-warn{
+    font-size: 14px;
+    color: rgb(153,153,153);
+}
+.pay-container .main{
+    margin-top: 25px;
+    padding: 20px 15px 30px;
+}
+.pay-container .top{
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+}
+.top-right{
+    color: rgb(153,153,153);
+}
+.num-font{
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(214,188,142);
+}
+.unit{
+    font-size: 18px;
+    color: rgb(191,191,191);
+}
+.top-right p:first-child{
+    margin-bottom: 15px;
+}
+.top-left p:first-child{
+    margin-bottom: 10px;
+}
+.mr15{
+    margin-right: 15px;
+}
+.pay-container .bottom{
+    margin-top: 20px;
+}
+.pay-container .bottom p{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+.pay-container .code{
+    width: 18px;
+    height: 18px;
+    background: #eee;
+}
+.mb40{
+    margin-bottom: 40px !important;
+}
+.btn-box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    font-family: PingFang-SC-Bold;
+}
+.btn-box button:first-child{
+    width: 110px;
+    height: 55px;
+    margin-right: 20px;
+    font-size: 17px;
+    background: rgb(43,43,46);
+    border-radius: 5px;
+    color: #fff;
+}
+.btn-box button:last-child{
+    flex:1;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 5px;
+    background: rgb(214,188,142);
+}
