@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+##这是交易所react版本，具体包括：
+1. 子父组件通信
+2. 高阶组件
+3. redux
+
 ## Available Scripts
 
 In the project directory, you can run:
