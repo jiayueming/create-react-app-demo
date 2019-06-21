@@ -1,5 +1,7 @@
 import React from 'react'
 import http from '../../utils/http'
+import PropTypes from 'prop-types'; // ES6
+import { Redirect } from 'react-router-dom'
 import {ERR_OK} from '../../utils/config'
 import {connect} from 'react-redux'
 import {createOrder} from '../../redux/exchange.redux'
@@ -32,9 +34,11 @@ class PurChase extends React.Component{
         this.handleChange = this.handleChange.bind(this)
     }
     componentDidMount () {
-        let token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTkwMzI1MjUsInVzZXJfbmFtZSI6IjE1NjE3OTA3MzQwIiwianRpIjoiOWExNTc0OTItMzk3NS00ZTEzLWIwYTQtMzdlZTcyN2MwZDc4IiwiY2xpZW50X2lkIjoidXNlci1zZXJ2aWNlIiwic2NvcGUiOlsic2VydmljZSJdfQ.VcwvCGArdxnqiLvvvjuoBFsBdVgQRKpSSP6Hg46Gxnnnp8bIanvoEc6Wh4ZL6JskSf-pAY0uoiP7igPNuBUVfns-e6S5HWRAsge_AHX4glvz-ozlJjk01JpM5nem1k1QxW_cnhZ82tB7g_Q8AJ8EOhe38OmjDHrLrCqQQ3njGM2FKda9Az6nrEOzaao8tyegsO3SBIpN70cyCs8RSFepS278R-ePWYmVeCLT98J22GVzVeyisOUkLrhuNeRJqN12supbcZ81kupY60TkO5IGPo2Vo1KKkiMZM6KeEcZiqZ4wQvzNu6g7l1fna1SBctQCN1YthfRX4gkjsaKG0fgwvw'
+        let token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTkxMDA3MjUsInVzZXJfbmFtZSI6IjE1NjE3OTA3MzQwIiwianRpIjoiZmE0ODQyMjEtZjVhMC00YmYxLTgzMTktNDQ3MmIwNDRmMGE5IiwiY2xpZW50X2lkIjoidXNlci1zZXJ2aWNlIiwic2NvcGUiOlsic2VydmljZSJdfQ.Di9CpPizcdKQCkMxe7NgwjXDpnbgsDoMkd3LuZDI_mAYFgCLSug6T5qkdHGlGZoIcTpH-wMx-mmYfIz8aCDIF4ubZghUtJ9cH-81V6Gde2z6S3-UXAA2NqpDpkHcUowW4pTJfcKrS70nRzTmFe3zeZfJeod0mgVjC0fCTuOf2B7m1ZFMRgO4HASV1E1uaMo4LwxE7TCHjlUZsV6cIAA0Flp7QIwxt1cHF_hQK1XMaa3uwDQs4Lt7U-YoKfjLt_VuHK7X-NQUxX0HLgFLxjhV2QEh7Vfym0vuFzE52s3kcUCuOUo0JswT44z6yS-m-P5dhXk_yWIXMSYr-vxZNfJ7Kg'
         sessionStorage.setItem('token', token)
         this.getCoinList()
+        console.log('re-denr')
+        if (this.props.isRefresh) this.getPrice()
     }
 	onChange(key,val){
 		this.setState({
@@ -138,12 +142,15 @@ class PurChase extends React.Component{
             coinId: this.state.coinId,
             unixTimestamps: new Date().getTime()
         }
-        
+        this.props.createOrder(data)
     }
 	render(){
         // const path = this.props.location.pathname
 		return (
 			<div className="container">
+                {
+                    this.props.orderId ? <Redirect to='/pay' /> : null
+                }
                 <header>
                     {
                         this.state.coinList.map((val, index) => {
@@ -189,5 +196,7 @@ class PurChase extends React.Component{
 		)
 	}
 }
-
+PurChase.propTypes = {
+    coinName: PropTypes.bool
+}
 export default PurChase

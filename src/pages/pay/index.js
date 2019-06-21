@@ -1,48 +1,30 @@
 import React from 'react'
 import http from '../../utils/http'
 import {ERR_OK} from '../../utils/config'
-import "./index.css";
+import countDown from '../../components/countDown/index.js'
+import {connect} from 'react-redux'
+import "./index.css"
+@connect(
+	state=>state.exchange
+)
+@countDown
 class Pay extends React.Component{
 	constructor(props) {
 		super(props)
 		this.state = {
             showBank: 'none',
             showWx: 'none',
-            showAli: 'none',
-            M: '',
-            S: ''
+            showAli: 'none'
         }
-        this.calcuTime = this.calcuTime.bind(this)
-        this.countdown = this.countdown.bind(this)
     }
     componentDidMount () {
-        this.getPrice()
-    }
-    calcuTime (second) {
-        let M = (parseInt(second / 60) % 60).toString()
-        let S = (parseInt(second % 60)).toString()
-        this.setState({
-          M: M,
-          S: S
-        })
-    }
-    countdown (allTime) {
-        this.calcuTime(allTime)
-        let timer = setInterval(() => {
-          if (allTime <= 0) {
-            clearInterval(timer)
-            return
-          }
-          allTime--
-          this.calcuTime(allTime)
-        }, 1000)
-        if (allTime <= 0) {
-          clearInterval(timer)
+        if (this.props.orderId) {
+            this.getPrice()
         }
     }
     getPrice () {
         http.get('exchange-trade-server/order/info', {
-            Id: '270'
+            Id: this.props.orderId
           }).then(res => {
             if (res.code === ERR_OK) {
                 this.setState({
@@ -69,19 +51,19 @@ class Pay extends React.Component{
                         showWx: true
                     })
                 }
+                this.setState({
+                    expireTime: 300,
+                })
+                this.props.countdown(300)
                 if (res.data.expireTime === -2) {
-                    this.setState({
-                        expireTime: -2,
-                        M: '00',
-                        S: '00'
-                    })
+                    
                 } else {
                     this.setState({
                         expireTime: res.data.expireTime,
                         M: '00',
                         S: '00'
                     })
-                    this.countdown(res.data.expireTime)
+                    this.props.countdown(300)
                 }
             }
         })
@@ -90,7 +72,7 @@ class Pay extends React.Component{
 		return (
             <div className="pay-container">
                 <p className="title">请付款</p>
-                <p className="pay-warn">请在{this.state.M + ':' +this.state.S}内用本人支付宝账号付款给商家</p>
+                <p className="pay-warn">请在{this.props.state.M + ':' +this.props.state.S}内用本人支付宝账号付款给商家</p>
                 <div className="main">
                     <div className="top">
                         <div className="top-left">

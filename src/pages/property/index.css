@@ -1,0 +1,35 @@
+.property-container{
+    padding: 0 15px;
+    color: rgb(255,255,255);
+}
+.property{
+    position: relative;
+    margin-top: 15px;
+    padding: 20px 15px 15px;
+    background: rgb(28,28,30);
+}
+.font-gray{
+    color: rgb(204,204,204);
+    font-size: 14px;
+}
+.totalProperty{
+    margin: 20px 0;
+    font-size: 30px;
+}
+.coinName{
+    margin-right: 16px;
+    font-size: 15px;
+}
+.check{
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    font-size: 12px;
+    background: rgb(172, 169, 169);
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
